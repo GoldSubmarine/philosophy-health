@@ -240,7 +240,7 @@
       }
 
       function handleAnswer(e, questionNum) {
-        answerList[questionNum] = Boolean(e.target.value)
+        answerList[questionNum] = e.target.value === 'true'
         if(answerList.length === questionList.length) {
           completeSurvey()
         }
@@ -260,7 +260,7 @@
         let yourAnswerList = document.querySelectorAll('.your-answer')
         for(let i = 0; i < yourAnswerList.length; i++) {
           let [num1, num2] = conflictArr[i].pair
-          yourAnswerList[i].innerHTML = `你的答案：问题${num1}(${answerList[num1] ? '同意' : '不同意'})  问题${num2}(${answerList[num1] ? '同意' : '不同意'})`
+          yourAnswerList[i].innerHTML = `你的答案：问题${num1+1}(${answerList[num1] ? '同意' : '不同意'})  问题${num2+1}(${answerList[num1] ? '同意' : '不同意'})`
         }
       }
       
@@ -268,6 +268,7 @@
         if(shouldReadSelfReport && reportList.length > 0) {
           fullpage_api.setScrollingSpeed(0);
           window.location.hash = `#home/report-${reportList.shift()}`
+          return
         }
         if(shouldReadSelfReport && reportList.length === 0) {
           shouldReadSelfReport = false
@@ -312,8 +313,8 @@
             <div class="slide" data-anchor="report-${i}">
               <div class="form">
                 <h3>${conflict.title}</h3>
-                <div class="border-blue">问题${num1}：${questionList[num1]}</div>
-                <div class="border-blue">问题${num2}：${questionList[num2]}</div>
+                <div class="border-blue">问题${num1+1}：${questionList[num1]}</div>
+                <div class="border-blue">问题${num2+1}：${questionList[num2]}</div>
                 <div class="your-answer txt-green">你的答案：xxxxx</div>
                 <div class="analysis txt-bg">
                   <b>分析</b>：${conflict.analysis}
