@@ -7,18 +7,20 @@
     <title>哲学健康测试</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@3.1.2/dist/fullpage.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullpage.js@3.1.2/vendors/scrolloverflow.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullpage.js@3.1.2/dist/fullpage.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <style>
         .form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            padding: 0 6%;
-            box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          max-width: 1000px;
+          height: 100%;
+          padding: 0 6%;
+          box-sizing: border-box;
+          margin: auto;
         }
         .question {
           line-height: 1.4;
@@ -32,6 +34,10 @@
         }
         .analysis {
           font-size: 14px;
+          line-height: 1.4;
+        }
+        label, button {
+          cursor: pointer;
         }
         h3, h1 {
           border-radius: 6px;
@@ -63,7 +69,7 @@
           border: none;
           padding: 8px 10px;
           border-radius: 4px;
-          margin: 0px 0 80px 0;
+          margin: 0px 0 20px 0;
         }
     </style>
   </head>
@@ -134,7 +140,7 @@
             <div class="txt-bg">1~2个紧张关系：你的思想就算不是完全一致，至少也非常接近了</div>
             <div class="txt-bg">3~5个紧张关系：喝大多数人一样，你的各种观念之间存在不少冲突喝矛盾。</div>
             <div class="txt-bg">6个以上：你要么思想极其细腻，要么就是一个超级矛盾的综合体。</div>
-            <button class="btn" onclick="readReport()">查看报告</button>
+            <button class="btn" onclick="readReport()">查看你的报告</button>
           </div>
         </div>
         <div id="reports">
@@ -236,6 +242,7 @@
           scrollingSpeed: 300,
           controlArrows: false,
           touchSensitivity: 100,
+          scrollOverflow: true,
         });
       }
 
